@@ -50,11 +50,4 @@ class ViewController: NSViewController {
       squareViews[i].squareState = squareState
     }
   }
-
-  override var representedObject: Any? {
-    didSet {
-    // Update the view, if already loaded.
-    }
-  }
-
 }
