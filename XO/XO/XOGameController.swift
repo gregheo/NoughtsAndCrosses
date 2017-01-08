@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Player {
+enum Player: String {
   case Nought
   case Cross
 }
@@ -31,5 +31,29 @@ class XOGameController {
     squares[square] = currentPlayer
 
     currentPlayer = (currentPlayer == .Cross) ? .Nought : .Cross
+  }
+
+  var winner: Player? {
+    // horizontals
+    for index in [0, 3, 6] {
+      if squares[index] != nil && squares[index] == squares[index+1] && squares[index] == squares[index+2] {
+        return squares[index]
+      }
+    }
+
+    // verticals
+    for index in 0...2 {
+      if squares[index] != nil && squares[index] == squares[index+3] && squares[index] == squares[index+6] {
+        return squares[index]
+      }
+    }
+
+    // diagonals
+    if squares[4] != nil &&
+      (squares[4] == squares[0] && squares[4] == squares[8]) || (squares[4] == squares[2] && squares[4] == squares[6]) {
+      return squares[4]
+    }
+
+    return nil
   }
 }

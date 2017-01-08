@@ -40,6 +40,7 @@ class ViewController: NSViewController {
       if squareView.frame.contains(view.convert(event.locationInWindow, from: nil)) {
         gameController.playTurn(square: i)
         refreshSquareViews()
+        checkForWinner()
         break
       }
     }
@@ -48,6 +49,20 @@ class ViewController: NSViewController {
   private func refreshSquareViews() {
     for (i, squareState) in gameController.squares.enumerated() {
       squareViews[i].squareState = squareState
+    }
+  }
+
+  private func checkForWinner() {
+    if let winner = gameController.winner {
+      let alert = NSAlert()
+      alert.addButton(withTitle: "OK")
+      alert.messageText = "Player \(winner.rawValue) has won!"
+      alert.runModal()
+    } else if gameController.moveCount == 9 {
+      let alert = NSAlert()
+      alert.addButton(withTitle: "OK")
+      alert.messageText = "No winner :("
+      alert.runModal()
     }
   }
 }
