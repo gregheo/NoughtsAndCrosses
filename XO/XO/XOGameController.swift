@@ -33,6 +33,11 @@ class XOGameController {
     currentPlayer = (currentPlayer == .Cross) ? .Nought : .Cross
   }
 
+  func reset() {
+    currentPlayer = .Cross
+    squares = Array(repeating: nil, count: 9)
+  }
+
   var winner: Player? {
     // horizontals
     for index in [0, 3, 6] {
