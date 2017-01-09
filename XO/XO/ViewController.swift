@@ -52,12 +52,18 @@ class ViewController: NSViewController {
     }
   }
 
+  private func resetGame() {
+    gameController.reset()
+    refreshSquareViews()
+  }
+
   private func checkForWinner() {
     if let winner = gameController.winner {
       let alert = NSAlert()
       alert.addButton(withTitle: "OK")
       alert.messageText = "Player \(winner.rawValue) has won!"
       alert.runModal()
+      resetGame()
     } else if gameController.moveCount == 9 {
       let alert = NSAlert()
       alert.addButton(withTitle: "OK")
