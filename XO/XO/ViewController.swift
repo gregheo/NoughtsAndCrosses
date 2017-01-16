@@ -8,6 +8,14 @@
 import Cocoa
 import CoreGraphics
 
+import RxCocoa
+import RxSwift
+
+private enum MouseDownError: Error {
+  case NoPoint
+  case NoSquare
+}
+
 class ViewController: NSViewController {
   @IBOutlet var playBackgroundView: NSView!
 
@@ -25,6 +33,32 @@ class ViewController: NSViewController {
 
   let gameController = XOGameController()
 
+  let disposeBag = DisposeBag()
+
+  var rx_delegate: DelegateProxy {
+    return DelegateProxy(parentObject: self)
+  }
+
+  var rx_click: Observable<Int> {
+    return self.rx.sentMessage(#selector(NSResponder.mouseDown(with:)))
+      .map({ (params) -> NSPoint? in
+        if let event = params.first as? NSEvent {
+          return self.view.convert(event.locationInWindow, from: nil)
+        }
+        return nil
+      })
+      .map({ (point) -> Int? in
+        guard let point = point else { return nil }
+        for (i, squareView) in self.squareViews.enumerated() {
+          if squareView.frame.contains(point) {
+            return i
+          }
+        }
+        return nil
+      })
+      .unwrap()
+  }
+
   override func viewDidAppear() {
     super.viewDidAppear()
 
@@ -33,17 +67,12 @@ class ViewController: NSViewController {
     playBackgroundView.layer?.backgroundColor = NSColor.orange.cgColor
 
     squareViews = [square0, square1, square2, square3, square4, square5, square6, square7, square8]
-  }
 
-  override func mouseDown(with event: NSEvent) {
-    for (i, squareView) in squareViews.enumerated() {
-      if squareView.frame.contains(view.convert(event.locationInWindow, from: nil)) {
-        gameController.playTurn(square: i)
-        refreshSquareViews()
-        checkForWinner()
-        break
-      }
-    }
+    rx_click.subscribe(onNext: { squareIndex in
+      self.gameController.playTurn(square: squareIndex)
+      self.refreshSquareViews()
+      self.checkForWinner()
+    }).addDisposableTo(disposeBag)
   }
 
   private func refreshSquareViews() {

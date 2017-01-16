@@ -14,6 +14,11 @@
 		784A29511E185D8500EEDC06 /* XOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A29501E185D8500EEDC06 /* XOTests.swift */; };
 		784A295C1E18604B00EEDC06 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A295B1E18604B00EEDC06 /* SquareView.swift */; };
 		784A295E1E18691B00EEDC06 /* XOGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A295D1E18691B00EEDC06 /* XOGameController.swift */; };
+		78DEC1A11E2C43E3002A8162 /* unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEC1A01E2C43E3002A8162 /* unwrap.swift */; };
+		78F13D321E233C1E00FA6BED /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F13D301E233C1E00FA6BED /* RxCocoa.framework */; };
+		78F13D331E233C1E00FA6BED /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78F13D301E233C1E00FA6BED /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		78F13D341E233C1E00FA6BED /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F13D311E233C1E00FA6BED /* RxSwift.framework */; };
+		78F13D351E233C1E00FA6BED /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78F13D311E233C1E00FA6BED /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +30,21 @@
 			remoteInfo = XO;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		78F13D361E233C1E00FA6BED /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				78F13D351E233C1E00FA6BED /* RxSwift.framework in Embed Frameworks */,
+				78F13D331E233C1E00FA6BED /* RxCocoa.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		784A293B1E185D8500EEDC06 /* XO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +58,9 @@
 		784A29521E185D8500EEDC06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		784A295B1E18604B00EEDC06 /* SquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
 		784A295D1E18691B00EEDC06 /* XOGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XOGameController.swift; sourceTree = "<group>"; };
+		78DEC1A01E2C43E3002A8162 /* unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = unwrap.swift; sourceTree = "<group>"; };
+		78F13D301E233C1E00FA6BED /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
+		78F13D311E233C1E00FA6BED /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F13D341E233C1E00FA6BED /* RxSwift.framework in Frameworks */,
+				78F13D321E233C1E00FA6BED /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				784A293D1E185D8500EEDC06 /* XO */,
+				78F13D371E233C2C00FA6BED /* Rx Frameworks */,
 				784A294F1E185D8500EEDC06 /* XOTests */,
 				784A293C1E185D8500EEDC06 /* Products */,
 			);
@@ -85,6 +111,7 @@
 				784A29441E185D8500EEDC06 /* Main.storyboard */,
 				784A295B1E18604B00EEDC06 /* SquareView.swift */,
 				784A295D1E18691B00EEDC06 /* XOGameController.swift */,
+				78DEC1A01E2C43E3002A8162 /* unwrap.swift */,
 				784A29471E185D8500EEDC06 /* Info.plist */,
 			);
 			path = XO;
@@ -99,6 +126,15 @@
 			path = XOTests;
 			sourceTree = "<group>";
 		};
+		78F13D371E233C2C00FA6BED /* Rx Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78F13D301E233C1E00FA6BED /* RxCocoa.framework */,
+				78F13D311E233C1E00FA6BED /* RxSwift.framework */,
+			);
+			name = "Rx Frameworks";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +145,7 @@
 				784A29371E185D8500EEDC06 /* Sources */,
 				784A29381E185D8500EEDC06 /* Frameworks */,
 				784A29391E185D8500EEDC06 /* Resources */,
+				78F13D361E233C1E00FA6BED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78DEC1A11E2C43E3002A8162 /* unwrap.swift in Sources */,
 				784A295C1E18604B00EEDC06 /* SquareView.swift in Sources */,
 				784A29411E185D8500EEDC06 /* ViewController.swift in Sources */,
 				784A295E1E18691B00EEDC06 /* XOGameController.swift in Sources */,
@@ -333,6 +371,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = XO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gregheo.XO;
@@ -346,6 +389,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = XO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gregheo.XO;
@@ -403,6 +451,7 @@
 				784A29571E185D8500EEDC06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		784A29581E185D8500EEDC06 /* Build configuration list for PBXNativeTarget "XOTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +460,7 @@
 				784A295A1E185D8500EEDC06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
